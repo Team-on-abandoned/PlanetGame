@@ -44,16 +44,25 @@
     <Compile Include="Common\Coord.cs" />
     <Compile Include="ComponentMessage\BaseComponentMessage.cs" />
     <Compile Include="ComponentMessage\ComponentMessageType.cs" />
+    <Compile Include="ComponentMessage\InputMessage.cs" />
+    <Compile Include="ComponentMessage\RenderMessage.cs" />
+    <Compile Include="ComponentMessage\TickMessage.cs" />
     <Compile Include="Component\BaseComponent.cs" />
+    <Compile Include="Component\InputableComponent.cs" />
+    <Compile Include="Component\SolidBodyComponent.cs" />
+    <Compile Include="Component\TextureComponent.cs" />
+    <Compile Include="Component\TextureId.cs" />
+    <Compile Include="Component\TransformationComponent.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameContext.cs" />
     <Compile Include="GameObject\BaseGameObject.cs" />
+    <Compile Include="GameObject\GameObjectRenderState.cs" />
     <Compile Include="GameObject\GameObjectType.cs" />
+    <Compile Include="Interfaces\IGraphics.cs" />
+    <Compile Include="Interfaces\IInputListener.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Common\Size.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

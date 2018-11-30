@@ -1,8 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Concurrent;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using Game.Common;
+using Game.Component;
+using Game.ComponentMessage;
+using Game.GameObject;
+using Game.Interfaces;
 
 namespace Game {
 	class GameContext {
@@ -14,8 +21,29 @@ namespace Game {
 
 		private GameContext() {
 			isRunning = true;
+			gameObjects = new List<BaseGameObject>();
+			graphicsRenderers = new List<IGraphics>();
+			inputListeners = new List<IInputListener>();
+			renderQueue = new ConcurrentQueue<GameObjectRenderState>();
 		}
 		#endregion
+
+		#region Render 
+
+		ConcurrentQueue<GameObjectRenderState> renderQueue;
+		List<IGraphics> graphicsRenderers;
+
+		public void SendRenderState(GameObjectRenderState msg) => renderQueue.Enqueue(msg);
+		bool TryReadRenderState(out GameObjectRenderState msg) => renderQueue.TryDequeue(out msg);
+
+		#endregion
+
+		#region Input
+		List<IInputListener> inputListeners;
+		#endregion
+
+		#region Game
+		List<BaseGameObject> gameObjects;
 
 		bool isRunning;
 
@@ -47,23 +75,40 @@ namespace Game {
 				interpolation = (double)(Environment.TickCount + skipTicks - next_game_tick) / skipTicks;
 				Display(interpolation);
 			}
+
+			DisposeAllGame();
 		}
 
 		void Update() {
-			ReadPlayersInput();
+			ReadInput();
 			ProcessMessages();
 		}
 
-		void ReadPlayersInput() {
-
+		void ReadInput() {
+			//foreach (var go in gameObjects)
+			//	go.SendMessage(new InputMessage());
 		}
 
 		void ProcessMessages() {
-
+			foreach (var i in gameObjects)
+				i.Process();
 		}
 
 		void Display(double interpolation) {
-
+			foreach (var go in gameObjects)
+				go.SendMessage(new RenderMessage(interpolation));
 		}
+
+		void DisposeAllGame() {
+			foreach (var go in gameObjects)
+				go.Dispose();
+			gameObjects.Clear();
+
+			inputListeners.Clear();
+			graphicsRenderers.Clear();
+			while (TryReadRenderState(out GameObjectRenderState rs)) ;
+		}
+
+		#endregion
 	}
 }

@@ -12,7 +12,6 @@ namespace Game.GameObject {
 
 		public GameObjectType GOType { get; protected set; }
 		public BaseGameObject Parent { get; protected set; }
-		public bool IsUpdated { get; set; }
 		public BaseComponent[] Components => components.ToArray();
 		public ulong Id { get; private set; }
 		public bool IsDisposed { get; protected set; }
@@ -25,7 +24,7 @@ namespace Game.GameObject {
 			components = new List<BaseComponent>();
 			messageQueue = new ConcurrentQueue<BaseComponentMessage>();
 			Id = ++lastId;
-			IsDisposed = IsUpdated = false;
+			IsDisposed = false;
 
 			this.GOType = goType;
 			this.Parent = parent;
@@ -47,7 +46,7 @@ namespace Game.GameObject {
 			if (IsDisposed)
 				return;
 
-			SendMessage(new BaseComponentMessage(ComponentMessageType.TickElapsed));
+			SendMessage(new TickMessage());
 
 			while (messageQueue.Count > 0) {
 				if (messageQueue.TryDequeue(out BaseComponentMessage msg))

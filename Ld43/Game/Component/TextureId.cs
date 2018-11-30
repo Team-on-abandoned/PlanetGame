@@ -4,12 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game.ComponentMessage {
-	enum ComponentMessageType : byte {
+namespace Game.Component {
+	enum TextureId : byte {
 		None,
-
-		TickElapsed,
-		Render,
-		Input,
 	}
 }

@@ -4,12 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game.ComponentMessage {
-	enum ComponentMessageType : byte {
-		None,
-
-		TickElapsed,
-		Render,
-		Input,
+namespace Game.GameObject {
+	class GameObjectRenderState {
 	}
 }
