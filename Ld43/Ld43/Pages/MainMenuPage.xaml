@@ -5,14 +5,23 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Ld43.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      ShowsNavigationUI="False"
-      Title="LD43"
+
+	  Style="{StaticResource BasePage}"
 	  >
 
-    <Grid>
+	<DockPanel LastChildFill="True">
+		<DockPanel DockPanel.Dock="Bottom" LastChildFill="False">
+			<Button Width="75" Height="50" Content="Українська" DockPanel.Dock="Right" Click="SetLanguageUa"/>
+			<Button Width="75" Height="50" Content="Русский" DockPanel.Dock="Right" Click="SetLanguageRu"/>
+			<Button Width="75" Height="50" Content="English" DockPanel.Dock="Right" Click="SetLanguageEng"/>
+		</DockPanel>
+
 		<StackPanel>
-			<Button>Btn1</Button>
+			<Button Content="{DynamicResource mainMenuPlay}"         Click="Play_Click"/>
+			<Button Content="{DynamicResource mainMenuSettings}"     Click="Settings_Click"/>
+			<Button Content="{DynamicResource mainMenuAchievements}" Click="Achievements_Click"/>
+			<Button Content="{DynamicResource mainMenuCredits}"      Click="Credits_Click"/>
+			<Button Content="{DynamicResource mainMenuExit}"         Click="Exit_Click"/>
 		</StackPanel>
-    </Grid>
+	</DockPanel>
 </Page>

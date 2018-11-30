@@ -14,12 +14,54 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Ld43.Pages {
-	/// <summary>
-	/// Interaction logic for Page1.xaml
-	/// </summary>
-	public partial class MainMenuPage : Page {
-		public MainMenuPage() {
-			InitializeComponent();
-		}
-	}
+    public partial class MainMenuPage : Page {
+        static MainMenuPage mainMenuPage;
+        static GamePage gamePage = new GamePage();
+        static AchievementsPage achievementsPage = new AchievementsPage();
+        static SettingsPage settingsPage = new SettingsPage();
+        static CreditsPage creditsPage = new CreditsPage();
+
+        public static MainMenuPage _MainMenuPage => mainMenuPage;
+        public static GamePage GamePage => gamePage;
+        public static AchievementsPage AchievementsPage => achievementsPage;
+        public static SettingsPage SettingsPage => settingsPage;
+        public static CreditsPage CreditsPage => creditsPage;
+
+        public MainMenuPage() {
+            InitializeComponent();
+            mainMenuPage = this;
+        }
+
+        private void Play_Click(object sender, RoutedEventArgs e) {
+            App.Current.MainWindow.Content = gamePage;
+        }
+
+        private void Settings_Click(object sender, RoutedEventArgs e) {
+            App.Current.MainWindow.Content = SettingsPage;
+        }
+
+        private void Achievements_Click(object sender, RoutedEventArgs e) {
+            App.Current.MainWindow.Content = achievementsPage;
+        }
+
+        private void Credits_Click(object sender, RoutedEventArgs e) {
+            App.Current.MainWindow.Content = creditsPage;
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e) {
+            App.Current.MainWindow.Close();
+        }
+
+        private void SetLanguageUa(object sender, RoutedEventArgs e) {
+            App.Language = App.Languages[2];
+        }
+
+        private void SetLanguageRu(object sender, RoutedEventArgs e) {
+            App.Language = App.Languages[1];
+        }
+
+        private void SetLanguageEng(object sender, RoutedEventArgs e) {
+            App.Language = App.Languages[0];
+        }
+    }
 }
