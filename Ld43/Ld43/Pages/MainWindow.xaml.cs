@@ -25,13 +25,11 @@ namespace Ld43.Pages {
             App.Current.MainWindow = this;
         }
 
-        public bool IsClosed { get; private set; }
-        protected override void OnClosed(EventArgs e) {
-            base.OnClosed(e);
-            IsClosed = true;
-        }
+		private void Window_Closed(object sender, EventArgs e) {
+			App.Current.MainWindow.Close();
+		}
 
-        public void OpenFullScreen() {
+		public void OpenFullScreen() {
             WindowStyle = WindowStyle.None;
             WindowState = WindowState.Maximized;
 

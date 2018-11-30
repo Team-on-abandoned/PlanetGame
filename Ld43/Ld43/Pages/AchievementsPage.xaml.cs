@@ -19,10 +19,6 @@ namespace Ld43.Pages {
             InitializeComponent();
         }
 
-        private void Window_Closed(object sender, EventArgs e) {
-            App.Current.MainWindow.Close();
-        }
-
         private void Back_Click(object sender, RoutedEventArgs e) {
             App.Current.MainWindow.Content = MainMenuPage._MainMenuPage;
         }

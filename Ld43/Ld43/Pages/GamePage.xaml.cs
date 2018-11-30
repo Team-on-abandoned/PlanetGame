@@ -24,5 +24,13 @@ namespace Ld43.Pages {
 
             game = new Game.Game();
         }
-    }
+
+		public void StartGame(){
+			game.StartGame();
+		}
+
+		private void Back_Click(object sender, RoutedEventArgs e) {
+			App.Current.MainWindow.Content = MainMenuPage._MainMenuPage;
+		}
+	}
 }

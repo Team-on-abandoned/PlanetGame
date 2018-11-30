@@ -9,7 +9,17 @@
 	  Style="{StaticResource BasePage}"
 	  >
 
-    <Grid>
-        
-    </Grid>
+	<Grid>
+		<!--Game zone-->
+		<Canvas Name="gameCanvas">
+		</Canvas>
+
+		<!--UI-->
+		<DockPanel Name="UIPanel" LastChildFill="False">
+			<DockPanel DockPanel.Dock="Bottom" LastChildFill="False">
+				<Button DockPanel.Dock="Right" Width="100" Content="{DynamicResource buttonBack}" Click="Back_Click"/>
+			</DockPanel>
+		</DockPanel>
+
+	</Grid>
 </Page>

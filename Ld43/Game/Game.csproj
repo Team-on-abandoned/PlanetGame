@@ -41,8 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Coord.cs" />
+    <Compile Include="ComponentMessage\BaseComponentMessage.cs" />
+    <Compile Include="ComponentMessage\ComponentMessageType.cs" />
+    <Compile Include="Component\BaseComponent.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="GameContext.cs" />
+    <Compile Include="GameObject\BaseGameObject.cs" />
+    <Compile Include="GameObject\GameObjectType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Common\Size.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
