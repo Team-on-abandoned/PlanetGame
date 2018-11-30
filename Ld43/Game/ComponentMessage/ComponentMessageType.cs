@@ -9,7 +9,5 @@ namespace Game.ComponentMessage {
 		None,
 
 		TickElapsed,
-		Render,
-		Input,
 	}
 }

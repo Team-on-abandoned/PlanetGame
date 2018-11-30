@@ -18,12 +18,6 @@ namespace Game.Component {
 		}
 
 		public override void ProcessMessage(BaseComponentMessage msg) {
-			if (msg.ComponentMessageType == ComponentMessageType.Render)
-				ProcessRender(msg as RenderMessage);
-		}
-
-		void ProcessRender(RenderMessage msg) {
-
 		}
 
 		public override bool CheckDependComponents() {
