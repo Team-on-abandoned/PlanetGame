@@ -1,5 +1,5 @@
-# LD42
-### [Ludum Dare Compo #43. Theme: "------"](https://ldjam.com/events/ludum-dare/43)
+# GameDev Challenge
+### [GameDev challenge pool](https://www.gamedev.net/blogs/entry/2266171-next-challenge-poll/)
 
 ##### THEME
 
@@ -20,9 +20,6 @@
 
 ##### TOOLS USED
  * Visual Studio 2017
- * Photoshop CS2
- * Aseprite
- * Paint
  * ...
 
 #### ABOUT CODE
