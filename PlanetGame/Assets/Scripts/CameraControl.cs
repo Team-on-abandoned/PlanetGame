@@ -5,9 +5,11 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour {
 	public Transform center;
 	public float rotationSpeed = 40.0f;
-	float radius;
 
-	public float FOVChange = 5;
+	public float minRadius = 7;
+	public float maxRadius = 50;
+	public float radiusChange = 3;
+	float radius;
 
 	Camera cam;
 
@@ -15,7 +17,7 @@ public class CameraControl : MonoBehaviour {
 	void Start() {
 		cam = GetComponent<Camera>();
 
-		radius = (transform.position - center.position).sqrMagnitude;
+		radius = (transform.position - center.position).magnitude;
 	}
 
 	void Update() {
@@ -28,10 +30,12 @@ public class CameraControl : MonoBehaviour {
 	}
 
 	void ChangeFOV(float wheelAxis) {
-		if (wheelAxis > 0) // forward
-			cam.fieldOfView -= FOVChange;
-		else if (wheelAxis < 0) // backwards
-			cam.fieldOfView += FOVChange;
+		if (wheelAxis > 0 && radius > minRadius) // forward
+			radius -= radiusChange;
+		if (wheelAxis < 0 && radius < maxRadius) // backwards
+			radius += radiusChange;
+
+		transform.position = Vector3.MoveTowards(transform.position, center.position + transform.position.normalized * radius, radiusChange);
 	}
 
 	void RotateCameraOrbit(float h, float v) {
